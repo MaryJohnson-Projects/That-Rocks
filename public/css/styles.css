@@ -1,0 +1,27 @@
+body {
+    background-image: url("/images/crystalBG.jpg");
+    background-position: top 80px;
+    background-size: cover;
+}
+
+.main-content {
+    display: grid;
+    grid-template-rows: 100px 1fr 40px;
+    grid-template-columns: 100%;
+
+    min-height:100vh;
+}
+
+.items-img {
+    height: 200px;
+}
+
+.ml-1 {
+    margin-left: 1em;
+}
+
+.flash {
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+}

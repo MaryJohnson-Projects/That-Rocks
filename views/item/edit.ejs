@@ -1,0 +1,62 @@
+<%- include('../partials/header.ejs')%>
+      
+      <div class="col-md-6 col-lg-8 my-2">
+        <div class="h-75 card">
+        <div class="card-body">
+            <form method='POST' action="/items/<%= item.id%>?_method=PUT" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input name="title" type="text" class="form-control" id="title" placeholder="Large Quartz Point" value="<%= item.title%>" required>
+            </div>
+            <div class="mb-3">
+                <label for="condition" class="form-label">Condition</label>
+                <select name="condition" class="form-control form-select" id="condition" required>
+                    <%if(item.condition === "Good"){%>
+                        <option value="Good" selected><%} else {%>
+                        <option value="Good"><%}%>Good</option>
+                    <%if(item.condition === "Okay"){%>
+                        <option value="Okay" selected><%} else {%>
+                        <option value="Okay"><%}%>Okay</option>
+                    <%if(item.condition === "Poor"){%>
+                        <option value="Poor" selected><%} else {%>
+                        <option value="Poor"><%}%>Poor</option>
+                    <%if(item.condition === "Damaged"){%>
+                        <option value="Damaged" selected><%} else {%>
+                        <option value="Damaged"><%}%>Damaged</option>
+                    <%if(item.condition === "Other"){%>
+                        <option value="Other" selected><%} else {%>
+                        <option value="Other"><%}%>Other</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input name="price" type="number" class="form-control" id="price" min="0" value="<%= item.price%>" step="0.01" required>
+            </div>
+            <div class="mb-3">
+                <label for="details" class="form-label">Details</label>
+                <textarea name="details" class="form-control" id="details" rows="2" required><%= item.details%></textarea>
+            </div>
+            
+            <div class="mb-4">
+                <label for="image" class="form-label">Image</label>
+                <input name="image" class="form-control" type="file" id="image">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 my-2">
+
+        <div class="h-75 card">
+            <div class="card-body">
+                <img class="card-img-top object-fit-center" src="/images/that-rocks-logo-sm.png" alt="Card image">
+                <p class="card-text my-2">An image is required for a listing. Please take a picture of your item against a neutral background if possible. The easier your item is to see, the better it will sell.</p>
+            </div>
+            </div>
+
+      </div>
+ 
+
+<%- include('../partials/footer.ejs')%>

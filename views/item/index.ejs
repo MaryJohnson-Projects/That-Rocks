@@ -1,0 +1,36 @@
+<%- include('../partials/header.ejs')%>
+
+        <%if(items.length) {%>
+            <%items.forEach(item=>{%>
+            <%if(item.active) {%>
+                <div class="col-lg-2 col-md-4 col-sm-6 my-2">
+                    <div class="card mx-auto h-75">     
+                        <img class="card-img-top object-fit-cover items-img" src="/images/<%= item.image%>" alt="Listing Image">
+                        <div class="card-body">
+                          <a href="/items/<%= item.id%>"><h4 class="card-title text-truncate"><%= item.title%></h4></a>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><%= item.condition%></li>
+                            <li class="list-group-item">$<%= item.price%></li>
+                            <li class="list-group-item"><%= item.totalOffers%> offers</li>
+                          </ul>
+                        </div>
+                    </div>
+                </div>
+            <%}%> 
+            <%});
+        } else {%>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div class="card mx-auto">
+                    <div class="card-body">
+                    <h2 class="card-title">No Listings Available!</h2>
+                    <p class="card-text">Check back later...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+        <%}%>
+
+      
+
+<%- include('../partials/footer.ejs')%>

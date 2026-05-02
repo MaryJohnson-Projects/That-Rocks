@@ -1,0 +1,53 @@
+<%- include('../partials/header.ejs')%>
+
+      
+      <div class="col-md-6 col-lg-8 my-2">
+        <div class="h-75 card">
+        <div class="card-body">
+            <form action="/items" method='POST' enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input name="title" type="text" class="form-control" id="title" placeholder="Large Quartz Point" required>
+            </div>
+            <div class="mb-3">
+                <label for="condition" class="form-label">Condition</label>
+                <select name="condition" class="form-control form-select" id="condition" required>
+                    <option value="" selected>Choose a condition...</option>
+                    <option value="Good">Good</option>
+                    <option value="Okay">Okay</option>
+                    <option value="Poor">Poor</option>
+                    <option value="Damaged">Damaged</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input name="price" type="number" class="form-control" id="price" min="0.01" value="0" step="0.01" required>
+            </div>
+            <div class="mb-3">
+                <label for="details" class="form-label">Details</label>
+                <textarea name="details" class="form-control" id="details" rows="2" required></textarea>
+            </div>
+            <div class="mb-4">
+                <label for="image" class="form-label">Image</label>
+                <input name="image" class="form-control" type="file" id="image" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 my-2">
+
+        <div class="h-75 card">
+            <div class="card-body">
+                <img class="card-img-top object-fit-center" src="/images/that-rocks-logo-sm.png" alt="Card image">
+                <p class="card-text my-2">An image is required for a listing. Please take a picture of your item against a neutral background if possible. The easier your item is to see, the better it will sell.</p>
+            </div>
+            </div>
+
+      </div>
+  
+
+<%- include('../partials/footer.ejs')%>

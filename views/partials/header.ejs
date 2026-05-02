@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>That Rocks!</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+</head>
+<body class="main-content">
+
+<nav class="navbar navbar-expand-sm bg-body-tertiary sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="/images/that-rocks-logo-sm.png" alt="That Rocks! logo" height="60">
+        </a>      
+ 
+        <form class="d-none d-md-flex" action="/items" method='GET'>
+            <input class="form-control mx-2" name="search" type="search" placeholder="Search" aria-label="Search" required>
+            <button class="btn btn-outline-primary" type="search" href=""><i class="fa fa-solid fa-search"></i></button>
+        </form>     
+
+        <div class="navbar-nav d-none d-sm-flex">
+            <a class="nav-link" href="/items">Browse</a>
+            <a class="nav-link" href="/items/new">Sell</a>
+            <%if(!user) {%>
+            <a class="nav-link" href="/users/new">Sign Up</a>
+            <a class="nav-link" href="/users/login">Login</a>
+            <%} else {%>
+            <a class="nav-link" href="/users/profile">My Account</a>
+            <a class="nav-link" href="/users/logout">Log Out</a>
+            <%}%>
+        </div>
+
+
+    </div>
+</nav>
+
+
+<div class="container h-100">
+    <div class="row align-items-center h-100">
+
+    <% if(errorMessages.length > 0) {%>
+        <% errorMessages.forEach(message=>{%>  
+            <div class="alert alert-danger">
+                <%=message%>
+            </div>
+        <%});%>
+    <%}%>
+    
+    <% if(successMessages.length > 0) {%>
+        <% successMessages.forEach(message=>{%>
+            <div class="alert alert-success flash my-1">
+                <%=message%>
+            </div>
+         <%});%>
+    <%}%>
+
+    
+
+    

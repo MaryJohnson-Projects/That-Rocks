@@ -1,0 +1,42 @@
+<%- include('../partials/header.ejs')%>
+
+      
+      <div class="col-md-6 col-lg-8 my-2">
+        <div class="h-75 card">
+        <div class="card-body">
+            <form action="/users" method='POST'>
+            <div class="mb-3">
+                <label for="firstname" class="form-label">First Name</label>
+                <input name="firstname" type="text" class="form-control" id="firstname" required>
+            </div>
+            <div class="mb-3">
+                <label for="lastname" class="form-label">Last Name</label>
+                <input name="lastname" type="text" class="form-control" id="lastname" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input name="email" type="email" class="form-control" id="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input name="password" type="password" class="form-control" id="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+            </form>
+        </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 my-2">
+
+        <div class="h-75 card">
+            <div class="card-body">
+                <img class="card-img-top object-fit-center" src="/images/that-rocks-logo-sm.png" alt="Card image">
+                <p class="card-text my-2">Welcome to That Rocks!</p>
+            </div>
+            </div>
+
+      </div>
+
+
+<%- include('../partials/footer.ejs')%>

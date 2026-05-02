@@ -1,0 +1,68 @@
+<%- include('../partials/header.ejs')%>
+
+    <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="card mx-auto">
+                <div class="card-body">
+                    <h2 class="card-title">Welcome, <%=user.firstname%></h2>
+
+                    <%if(items.length) {%>
+                        <p class="card-text">You have uploaded the following listings:</p>
+                        <table class="table">
+                        <tr>
+                            <th>Item</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                        <%items.forEach(item=>{%>
+                        <tr>
+                            <td><a href = "/items/<%= item.id%>"> <p><%= item.title%></p></a></td>
+                            <td><%if(item.active){%>active<%}else{%>inactive<%}%></td>
+                            <td>
+                                <form>
+                                <ul class="nav list-unstyled">
+                                    <li><button class="btn btn-sm btn-outline-success" type="submit" formmethod="GET" formaction="/items/<%= item.id%>/edit" ><i class="fa fa-solid fa-edit"></i></button></li>
+                                    <li class="ml-1"><button class="btn btn-sm btn-outline-danger" type="submit" formmethod="POST" formaction="/items/<%= item.id%>?_method=DELETE"><i class="fa fa-solid fa-trash"></i></button></li>
+                                    <li class="ml-1"><button class="btn btn-sm <%if(item.totalOffers==0){%> btn-outline-secondary <%} else {%> btn-outline-primary <%}%>" type="submit" formmethod="GET" formaction="/items/<%= item.id%>/offers" <%if(item.totalOffers==0){%> disabled <%} else {%> <%}%> >View Offers</button></li>    
+                                </ul>
+                                </form>
+                            </td>
+                        </tr>
+                        <% });%>
+                        </table>
+                    <%} else {%>
+                        
+                        <p class="card-text">You have no active listings.</p>
+                                    
+                    <%}%>
+
+                    <%if(offers.length) {%>
+                        <p class="card-text">You have made the following offers:</p>
+                        <table class="table">
+                        <tr>
+                            <th>Item</th>
+                            <th>Status</th>
+                            <th>Amount</th>
+                        </tr>
+                        <%offers.forEach(offer=>{%>
+                        <tr>
+                            <td><a href = "/items/<%= offer.item.id%>"> <p><%= offer.item.title%></p> </a> </td>
+                            <td><%= offer.status%></td>
+                            <td>
+                                $<%= offer.amount%>
+                            </td>
+                        </tr>
+                        <% });%>
+                        </table>
+                    <%} else {%>
+                        
+                        <p class="card-text">You have not made any offers.</p>
+                                    
+                    <%}%>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+<%- include('../partials/footer.ejs')%>
